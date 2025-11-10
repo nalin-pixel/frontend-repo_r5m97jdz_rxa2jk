@@ -4,43 +4,41 @@
 
 @layer base {
   :root {
+    --bg: #F3EEE8;
+    --surface: #FFFFFF;
+    --ink: #181818;
+    --muted-ink: #595959;
+    --accent: #BBAA97;
+    --line: #E5DFD8;
+
     --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --font-serif: 'Fraunces', 'Cormorant Garamond', serif;
+  }
+  .dark {
+    --bg: #0F0F0F;
+    --surface: #151515;
+    --ink: #F5F5F5;
+    --muted-ink: #BDBDBD;
+    --accent: #C9B8A6;
+    --line: #1F1F1F;
   }
 
-  html {
-    font-family: var(--font-sans);
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+  html { font-family: var(--font-sans); }
+  body { @apply antialiased bg-[var(--bg)] text-[var(--ink)]; }
 
-  body {
-    @apply antialiased;
-  }
+  .font-serif { font-family: var(--font-serif); letter-spacing: -0.01em; }
+  .text-display { font-size: clamp(44px, 6vw, 92px); }
+  .text-h1 { font-size: clamp(34px, 4.5vw, 60px); }
+  .text-h2 { font-size: clamp(26px, 3vw, 40px); }
+  .text-h3 { font-size: clamp(20px, 2vw, 28px); }
+  .text-body { font-size: clamp(16px, 1.2vw, 18px); }
+  .text-sm { font-size: 14px; }
+
+  .text-muted { color: var(--muted-ink); }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
-@layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
-
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+@layer components {
+  .btn-primary { @apply inline-flex items-center justify-center rounded-full px-6 py-3 bg-[var(--ink)] text-[var(--surface)] hover:opacity-90 transition; }
+  .btn-secondary { @apply inline-flex items-center justify-center rounded-full px-6 py-3 border border-[var(--line)] hover:bg-[var(--ink)]/5 transition; }
+  .input { @apply rounded-xl border border-[var(--line)] px-4 py-3 bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/40; }
 }
